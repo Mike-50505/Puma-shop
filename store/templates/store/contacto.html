@@ -1,0 +1,23 @@
+{% extends 'store/base.html' %}
+
+{% block content %}
+<div class="contenedor-formulario">
+    <h2>Contáctanos</h2>
+    <form method="post">
+        {% csrf_token %}
+        <div class="form-group">
+            <label>Nombre:</label>
+            <input type="text" name="nombre" required>
+        </div>
+        <div class="form-group">
+            <label>Email:</label>
+            <input type="email" name="email" required>
+        </div>
+        <div class="form-group">
+            <label>Mensaje:</label>
+            <textarea name="mensaje" rows="5" required></textarea>
+        </div>
+        <button type="submit" class="btn-enviar">Enviar</button>
+    </form>
+</div>
+{% endblock %}

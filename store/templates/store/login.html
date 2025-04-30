@@ -1,0 +1,21 @@
+{% extends 'store/base.html' %}
+{% load static %}
+
+{% block content %}
+<div class="login-container">
+    <img class="logo_de_sistemas" src="{% static 'store/images/logo_sistemas.png' %}" alt="logo de sistemas">
+    <form class="formulario-login" method="post">
+        {% csrf_token %}
+        <div class="formulario_input">
+            <label for="id_username"></label>
+            <input type="text" name="username" class="form-control" placeholder="email" required>
+        </div>
+        <div class="formulario_input">
+            <label for="id_password"></label>
+            <input type="password" name="password" placeholder="contraseña"  class="form-control" required>
+        </div>
+        <button type="submit" class="btn-login">Ingresar</button>
+    </form>
+    <p>¿No tienes cuenta? <a href="{% url 'registro' %}">Registrate</a></p>
+</div>
+{% endblock %}

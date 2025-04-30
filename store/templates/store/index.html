@@ -1,0 +1,76 @@
+{% extends 'store/base.html' %}
+{% load static %}
+
+{% block content %}
+
+<div id="bannerCarousel" class="carousel slide" data-bs-ride="carousel">
+    <!-- Indicadores (puntos inferiores) -->
+    <div class="carousel-indicators">
+        {% for banner in banners %}
+        <button 
+            type="button" 
+            data-bs-target="#bannerCarousel" 
+            data-bs-slide-to="{{ forloop.counter0 }}" 
+            {% if forloop.first %}class="active" aria-current="true"{% endif %}>
+        </button>
+        {% endfor %}
+    </div>
+
+    <!-- Imágenes -->
+    <div class="carousel-inner">
+        {% for banner in banners %}
+        <div class="carousel-item {% if forloop.first %}active{% endif %}">
+            <a href="{{ banner.url_destino }}" target="_blank">
+                <img 
+                    src="{{ banner.imagen.url }}" 
+                    class="d-block w-100" 
+                    alt="{{ banner.titulo }}"
+                    style="height: 500px; object-fit: cover;"
+                >
+            </a>
+        </div>
+        {% endfor %}
+    </div>
+
+    <!-- Controles (flechas) -->
+    <button class="carousel-control-prev" type="button" data-bs-target="#bannerCarousel" data-bs-slide="prev">
+        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+    </button>
+    <button class="carousel-control-next" type="button" data-bs-target="#bannerCarousel" data-bs-slide="next">
+        <span class="carousel-control-next-icon" aria-hidden="true"></span>
+    </button>
+</div>
+
+<div class="contenedor_de_articulos">
+    <h2 class="subtitulo-seccion">Productos Destacados</h2>
+    <div class="grid-productos">
+        {% for producto in productos_aleatorios %}
+        <div class="producto-card">
+            <div class="producto-imagen">
+                <a href="{% url 'detalle_producto_slug' producto.slug %}">
+                    {% if producto.imagen %}
+                        <img src="{{ producto.imagen.url }}" alt="{{ producto.nombre }}" loading="lazy">
+                    {% else %}
+                        <div class="imagen-placeholder">Sin imagen</div>
+                    {% endif %}
+                </a>
+                {% if producto.oferta %}
+                <span class="etiqueta-oferta">¡Oferta!</span>
+                {% endif %}
+            </div>
+            <div class="producto-info">
+                <h3>{{ producto.nombre }}</h3>
+                <p class="precio">
+                    {% if producto.oferta %}
+                    <span class="precio-original">${{ producto.precio }}</span>
+                    <span class="precio-descuento">${{ producto.precio_oferta }}</span>
+                    {% else %}
+                    ${{ producto.precio }}
+                    {% endif %}
+                </p>
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+</div>
+{% endblock %}

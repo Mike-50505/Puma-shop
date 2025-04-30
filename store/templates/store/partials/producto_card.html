@@ -1,0 +1,26 @@
+<!-- store/templates/store/partials/producto_card.html -->
+<article class="producto-card">
+    <div class="producto-imagen">
+        <a href="{% url 'detalle_producto_slug' producto.slug %}">
+            {% if producto.imagen %}
+                <img src="{{ producto.imagen.url }}" alt="{{ producto.nombre }}" loading="lazy">
+            {% else %}
+                <div class="imagen-placeholder">Sin imagen</div>
+            {% endif %}
+        </a>
+        {% if producto.oferta %}
+        <span class="etiqueta-oferta">¡Oferta!</span>
+        {% endif %}
+    </div>
+    <div class="producto-info">
+        <h3 class="nombre-producto">{{ producto.nombre }}</h3>
+        <p class="precio">
+            {% if producto.oferta %}
+            <span class="precio-original">${{ producto.precio }}</span>
+            <span class="precio-descuento">${{ producto.precio_oferta }}</span>
+            {% else %}
+            ${{ producto.precio }}
+            {% endif %}
+        </p>
+    </div>
+</article>

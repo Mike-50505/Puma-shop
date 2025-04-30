@@ -1,0 +1,43 @@
+.titulo_cont{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: rgba(0, 255, 255, 0);
+}
+.titulo{
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    flex-grow: 1;
+    text-align: center;
+    text-decoration: none;
+    color: rgb(0, 0, 0);
+    text-transform: uppercase;
+}
+.logo_de_sistemas{
+    width: 100%;
+    max-width: 100px;
+    height: auto;
+    text-align: center;
+    display: block;
+    margin: auto;
+    margin-top: 20px;
+    margin-bottom: 10px;
+}
+.formulario{
+    background: rgba(245, 82, 82, 0); 
+    padding: 10px 0 15px 20px;
+    box-sizing: content-box;
+    text-align: center;
+    width: 40%;
+    margin: auto;
+}
+.formulario_input{
+    padding: 5px;
+    width: 80%;
+    margin: 2%;
+    text-transform: uppercase;
+    border-radius: 5px;
+}
+.formulario_submit{
+    background-color: rgba(117, 117, 117, 0);
+    width: 41%;
+}

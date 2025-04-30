@@ -1,0 +1,765 @@
+/* ============== VARIABLES Y ESTILOS BASE ============== */
+:root {
+    --color-primario: #000000;
+    --color-secundario: #ffffff;
+    --color-oferta: #e63946;
+    --color-boton: #5fc4ec;
+    --color-boton-hover: #2a9d8f;
+    --color-texto: #000000;
+    --color-fondo: #ffffff;
+    --sombra: 0 4px 15px rgba(0,0,0,0.2);
+    --transicion: all 0.3s ease;
+}
+  
+  body {
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    margin: 0;
+    background-color: var(--color-fondo);
+    color: var(--color-texto);
+  }
+
+  body {
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif !important;
+}
+  
+  /* ============== HEADER Y NAVEGACIÓN ============== */
+  .header-container {
+    position: relative;
+  }
+  
+  .titulo_cont {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    background-color: transparent;
+    padding: 1rem 0;
+  }
+  
+  .titulo {
+    font-size: 2.5rem;
+    text-align: center;
+    text-transform: uppercase;
+    color: var(--color-primario);
+    letter-spacing: 2px;
+    margin: 0;
+    transition: var(--transicion);
+    text-decoration: none;
+  }
+  
+  .titulo:hover {
+    color: #333;
+  }
+  
+  .iniciar_sesion_barrasuperior {
+    position: absolute;
+    right: 10px;
+    top: 50%;
+    transform: translateY(-50%);
+    display: inline-block;
+    padding: 8px;
+}
+
+.iniciar_sesion_barrasuperior img {
+    width: 40px;
+    height: 40px;
+
+    display: block; /* Asegura visibilidad */
+}
+  
+  .barra_superio_cont {
+    display: flex;
+    justify-content: center;
+    width: 80%;
+    margin: 0 auto;
+    padding: 1rem 0;
+  }
+  
+  .barra_superior {
+    font-size: 1.2rem;
+    padding: 0 2rem;
+    color: var(--color-primario);
+    text-decoration: none;
+    position: relative;
+    transition: var(--transicion);
+  }
+  
+  .barra_superior::after {
+    content: "";
+    position: absolute;
+    bottom: -5px;
+    left: 0;
+    width: 100%;
+    height: 2px;
+    background: var(--color-primario);
+    transform: scaleX(0);
+    transition: var(--transicion);
+  }
+  
+  .barra_superior:hover::after {
+    transform: scaleX(1);
+  }
+  
+  /* ============== CONTENEDORES PRINCIPALES ============== */
+  .contenedor_de_articulos {
+    background-color: var(--color-primario);
+    padding: 0 3% 3%;
+  }
+  
+  .subtitulo-seccion {
+    color: var(--color-secundario);
+    font-size: 2rem;
+    text-align: center;
+    margin-bottom: 1rem;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    padding-top: 1rem;
+  }
+  
+  /* ============== GRID DE PRODUCTOS ============== */
+  .grid-productos {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 1.5rem;
+    margin: 0 auto;
+  }
+  
+  .producto-card {
+    background: transparent;
+    position: relative;
+    aspect-ratio: 1/1;
+    display: flex;
+    flex-direction: column;
+    transition: var(--transicion);
+  }
+  
+  .producto-imagen {
+    height: 100%;
+    overflow: hidden;
+    margin: 1%;
+    position: relative;
+  }
+  
+  .producto-imagen img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: var(--transicion);
+    transform-origin: center;
+  }
+  
+  .producto-card:hover .producto-imagen img {
+    transform: scale(1.05);
+    cursor: pointer;
+    box-shadow: var(--sombra);
+  }
+  
+  .producto-info {
+    padding: 0 1rem;
+    color: var(--color-secundario);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 90%;
+    gap: 0;
+  }
+  
+  .producto-info h3 {
+    margin: 0.2rem 0;
+    font-size: 1.1rem;
+    text-align: center;
+  }
+  
+  /* ============== PRECIOS Y OFERTAS ============== */
+  .precio {
+    color: var(--color-secundario);
+    font-size: 1rem;
+    margin: 0.2rem 0;
+  }
+  
+  .precio-original {
+    text-decoration: line-through;
+    color: #999;
+    margin-right: 0.5rem;
+  }
+  
+  .precio-descuento {
+    color: var(--color-oferta);
+    font-weight: bold;
+  }
+  
+  .etiqueta-oferta {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    background: var(--color-oferta);
+    color: var(--color-secundario);
+    padding: 0.3rem 0.8rem;
+    border-radius: 20px;
+    font-size: 0.9rem;
+    font-weight: bold;
+    z-index: 2;
+  }
+  
+  /* ============== BOTONES ============== */
+  .btn-ver-mas {
+    display: inline-block;
+    padding: 0.6rem 1.2rem;
+    background-color: var(--color-boton);
+    color: var(--color-secundario);
+    text-decoration: none;
+    border-radius: 5px;
+    transition: var(--transicion);
+    text-transform: uppercase;
+    font-size: 0.9rem;
+    margin-top: 0.5rem;
+  }
+  
+  .btn-ver-mas:hover {
+    background-color: var(--color-boton-hover);
+  }
+  
+  .botones-producto {
+    display: flex;
+    gap: 0.5rem;
+    margin-top: 0.5rem;
+  }
+  
+  .boton-carrito {
+    background: var(--color-primario);
+    color: var(--color-secundario);
+    border: none;
+    padding: 0.5rem 1rem;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: var(--transicion);
+    font-size: 0.9rem;
+  }
+  
+  .boton-carrito:hover {
+    background: #333;
+  }
+  
+  /* ============== PÁGINA DE DETALLE ============== */
+  .contenedor-detalle {
+    max-width: 1200px;
+    margin: 2rem auto;
+    padding: 2rem;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 3rem;
+    background: var(--color-secundario);
+    border-radius: 10px;
+    box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+  }
+  
+  .imagen-detalle img {
+    width: 100%;
+    height: 500px;
+    object-fit: contain;
+    border: 2px solid var(--color-primario);
+    border-radius: 10px;
+  }
+  
+  .info-detalle {
+    padding: 1rem;
+  }
+  
+  .precio-detalle {
+    font-size: 2rem;
+    margin: 1rem 0;
+  }
+  
+  .descripcion {
+    font-size: 1.1rem;
+    line-height: 1.6;
+    margin: 2rem 0;
+  }
+  
+  .acciones {
+    display: flex;
+    gap: 1rem;
+    margin-top: 2rem;
+  }
+  
+  .boton-volver {
+    padding: 0.8rem 1.5rem;
+    background: #333;
+    color: white;
+    text-decoration: none;
+    border-radius: 5px;
+    transition: var(--transicion);
+  }
+  
+  .boton-volver:hover {
+    background: #555;
+  }
+  
+  /* ============== LOGIN ============== */
+  .login-container {
+    max-width: 400px;
+    margin: 2rem auto;
+    padding: 2rem;
+    background: #fff;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+  }
+  
+  .logo_de_sistemas {
+    width: 100%;
+    max-width: 100px;
+    height: auto;
+    margin: 20px auto 10px;
+    display: block;
+  }
+  
+  .formulario-login {
+    box-sizing: content-box;
+    text-align: center;
+    width: 95%;
+    margin: 0 auto;
+  }
+  
+  .form-control {
+    padding: 7px 0;
+    width: 100%;
+    text-transform: uppercase;
+    border-radius: 5px;
+    border-color: #2d2d2d;
+    background-color: transparent;
+    margin: 5px 0;
+  }
+  
+  .btn-login {
+    background-color: rgb(71, 156, 254);
+    width: 95%;
+    border-radius: 7px;
+    border-color: transparent;
+    padding: 7px 0;
+    text-transform: uppercase;
+    margin: 5px 0;
+    cursor: pointer;
+    transition: var(--transicion);
+  }
+  
+  .btn-login:hover {
+    background-color: rgb(50, 130, 220);
+  }
+  
+  /* ============== RESPONSIVE ============== */
+  @media (max-width: 768px) {
+    .grid-productos {
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    }
+    
+    .titulo {
+      font-size: 2rem;
+    }
+    
+    .barra_superior {
+      font-size: 1rem;
+      padding: 0 1rem;
+    }
+  
+    .contenedor-detalle {
+      grid-template-columns: 1fr;
+      gap: 1.5rem;
+    }
+  }
+  
+  @media (max-width: 480px) {
+    .grid-productos {
+      grid-template-columns: 1fr;
+    }
+    
+    .producto-card {
+      aspect-ratio: unset;
+      height: 400px;
+    }
+    
+    .producto-imagen {
+      height: 60%;
+    }
+  
+    .login-container {
+      margin-top: 20%;
+      width: 90%;
+    }
+  }
+
+  * Estilos del carrito */
+.contenedor-carrito {
+    max-width: 1200px;
+    margin: 2rem auto;
+    padding: 2rem;
+}
+
+
+
+.items-carrito {
+    display: grid;
+    gap: 1.5rem;
+}
+
+.carrito-link{
+  text-align:right;
+  position: absolute;
+    right: 50px;
+    top: 50%;
+    transform: translateY(-50%);
+    max-width: 100%;
+    height: auto;
+    padding: 8px 15px;
+    text-decoration: none;
+    color: #000000;
+} 
+
+.item-carrito {
+    display: grid;
+    grid-template-columns: 150px 1fr;
+    gap: 1rem;
+    padding: 1rem;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    text-align: right;
+}
+
+.imagen-carrito img {
+    width: 100%;
+    height: 150px;
+    object-fit: cover;
+    border-radius: 4px;
+}
+
+.info-carrito input[type="number"] {
+    width: 70px;
+    padding: 0.5rem;
+    margin-right: 1rem;
+}
+
+.btn-eliminar {
+    background: #dc3545;
+    color: white;
+    padding: 0.5rem 1rem;
+    border-radius: 4px;
+    text-decoration: none;
+    display: inline-block;
+    margin-top: 0.5rem;
+}
+
+.resumen-carrito {
+    margin-top: 2rem;
+    padding: 1rem;
+    background: #f8f9fa;
+    border-radius: 8px;
+    text-align: right;
+}
+
+.btn-checkout {
+    background: #28a745;
+    color: white;
+    padding: 0.8rem 1.5rem;
+    border-radius: 4px;
+    text-decoration: none;
+    margin-left: 1rem;
+}
+
+.carrito-vacio {
+    text-align: center;
+    font-size: 1.2rem;
+    color: #666;
+}
+
+/* Autenticación */
+.auth-container {
+  max-width: 400px;
+  margin: 2rem auto;
+  padding: 2rem;
+  background: #fff;
+  border-radius: 8px;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+}
+
+.auth-container h2 {
+  text-align: center;
+  margin-bottom: 1.5rem;
+}
+
+.auth-container form p {
+  margin: 1rem 0;
+}
+
+.auth-container label {
+  display: block;
+  margin-bottom: 0.5rem;
+}
+
+.auth-container input[type="email"],
+.auth-container input[type="password"] {
+  width: 100%;
+  padding: 0.8rem;
+  margin-bottom: 1rem;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+}
+
+.btn-auth {
+  background: #264653;
+  color: white;
+  padding: 0.8rem 1.5rem;
+  border: none;
+  border-radius: 4px;
+  width: 100%;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+.btn-auth:hover {
+  background: #2a9d8f;
+}
+
+.auth-container a {
+  color: #264653;
+  text-decoration: none;
+}
+
+.auth-container a:hover {
+  text-decoration: underline;
+}
+
+/* Estilos específicos para login */
+.auth-container {
+  max-width: 400px;
+  margin: 3rem auto;
+  padding: 2rem;
+  background: #ffffff;
+  border-radius: 10px;
+  box-shadow: 0 2px 15px rgba(0,0,0,0.1);
+  text-align: center;
+}
+
+.logo_de_sistemas {
+  max-width: 150px;
+  margin-bottom: 1.5rem;
+}
+
+.alert-error {
+  background: #f8d7da;
+  color: #721c24;
+  padding: 0.8rem;
+  border-radius: 5px;
+  margin-bottom: 1.5rem;
+  font-size: 0.9rem;
+}
+
+.formulario-login {
+  display: flex;
+  flex-direction: column;
+  gap: 1.2rem;
+}
+
+.formulario_input label {
+  display: block;
+  text-align: left;
+  margin-bottom: 0.5rem;
+  color: #333;
+  font-weight: 500;
+}
+
+.formulario_input input {
+  width: 100%;
+  padding: 0.8rem;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+  font-size: 1rem;
+}
+
+.btn-login {
+  background: #264653;
+  color: white;
+  padding: 0.8rem;
+  border: none;
+  border-radius: 5px;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+.btn-login:hover {
+  background: #2a9d8f;
+}
+
+.enlaces-adicionales {
+  margin-top: 1.5rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.8rem;
+}
+
+.enlaces-adicionales a {
+  color: #264653;
+  text-decoration: none;
+  font-size: 0.9rem;
+}
+
+.enlaces-adicionales a:hover {
+  text-decoration: underline;
+}
+
+.contenedor-formulario {
+  max-width: 600px;
+  margin: 2rem auto;
+  padding: 2rem;
+  background: #fff;
+  border-radius: 10px;
+  box-shadow: 0 2px 15px rgba(0,0,0,0.1);
+}
+
+.form-group {
+  margin-bottom: 1.5rem;
+}
+
+.form-group label {
+  display: block;
+  margin-bottom: 0.5rem;
+  font-weight: 500;
+}
+
+.form-group input,
+.form-group textarea {
+  width: 100%;
+  padding: 0.8rem;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+  font-size: 1rem;
+}
+
+.btn-enviar {
+  background: #264653;
+  color: white;
+  padding: 0.8rem 1.5rem;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+.btn-enviar:hover {
+  background: #2a9d8f;
+}
+
+/* Menú desplegable */
+.dropdown {
+  position: relative;
+  display: inline-block;
+}
+
+.dropdown-toggle::after {
+  content: "▾";
+  margin-left: 0.3rem;
+  font-size: 0.8em;
+}
+
+.dropdown-menu {
+  display: none;
+  position: absolute;
+  background: white;
+  min-width: 160px;
+  box-shadow: 0 8px 16px rgba(0,0,0,0.1);
+  z-index: 1000;
+  border-radius: 4px;
+  padding: 0.5rem 0;
+  top: 100%;
+  left: 0;
+}
+
+.dropdown:hover .dropdown-menu {
+  display: block;
+}
+
+.dropdown-item {
+  display: block;
+  padding: 0.5rem 1rem;
+  color: #333;
+  text-decoration: none;
+  transition: all 0.2s;
+}
+
+.dropdown-item:hover {
+  background: #f8f9fa;
+  color: #264653;
+}
+.formulario-registro input {
+  width: 100%;
+  padding: 12px;
+  margin-bottom: 15px;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+  font-size: 1rem;
+  background-color: #f9f9f9;
+}
+
+/* Placeholders (texto dentro de los inputs) */
+.formulario-registro input::placeholder {
+  color: #999;
+  text-transform: none; /* Opcional: si no quieres mayúsculas */
+}
+
+/* Estilo al enfocar un input */
+.formulario-registro input:focus {
+  outline: none;
+  border-color: #264653;
+  box-shadow: 0 0 5px rgba(38, 70, 83, 0.3);
+}
+
+/* Botón de registro */
+.btn-auth {
+  background: #264653;
+  color: white;
+  padding: 12px;
+  border: none;
+  border-radius: 5px;
+  width: 100%;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+.btn-auth:hover {
+  background: #2a9d8f;
+}
+
+/* Carrusel */
+#bannerCarousel {
+  margin-bottom: 2rem;
+  border-radius: 8px;
+  overflow: hidden;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+}
+
+.carousel-item img {
+  width: 100%;
+  height: 500px;
+  object-fit: cover;
+}
+
+/* Indicadores (puntos) */
+.carousel-indicators button {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  margin: 0 5px;
+}
+
+/* Para íconos de FontAwesome */
+.fa-user, .fa-sign-out-alt {
+  font-size: 1.2rem;  /* Tamaño adecuado */
+  color: #000000;     /* Color negro (ajusta según tu diseño) */
+  margin-right: 8px;  /* Espaciado opcional */
+}
+
+/* Para íconos locales */
+.icono-login, .icono-logout {
+  width: 20px;        /* Ajusta el tamaño */
+  height: auto;
+}

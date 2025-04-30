@@ -1,0 +1,14 @@
+{% extends 'store/base.html' %}
+{% load static %}
+
+{% block content %}
+<div class="contenedor_de_articulos">
+    <h2 class="subtitulo-seccion">Productos en {{ categoria_actual }}</h2>
+    <div class="grid-productos">
+        {% for producto in productos %}
+            <!-- Misma estructura que shop.html -->
+            {% include 'store/partials/producto_card.html' %}
+        {% endfor %}
+    </div>
+</div>
+{% endblock %}
