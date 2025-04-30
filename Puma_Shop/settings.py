@@ -61,8 +61,7 @@ WSGI_APPLICATION = 'Puma_Shop.wsgi.application'
 
 DATABASES = {
     'default': dj_database_url.config(
-        default=os.getenv('DATABASE_URL'),  # Lee de variables de entorno
-        conn_max_age=600  # Conexiones persistentes
+        default='sqlite:///' + os.path.join(BASE_DIR, 'db.sqlite3')
     )
 }
 
