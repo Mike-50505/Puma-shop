@@ -167,3 +167,53 @@ class Banner(models.Model):
 
     def __str__(self):
         return self.titulo
+    
+class Valoracion(models.Model):
+    producto = models.ForeignKey(Producto, on_delete=models.CASCADE)
+    usuario = models.ForeignKey(CustomUser, on_delete=models.CASCADE)
+    puntuacion = models.PositiveSmallIntegerField(choices=[(i, i) for i in range(1, 6)])
+    comentario = models.TextField()
+    fecha = models.DateTimeField(auto_now_add=True)
+    
+class Inventario(models.Model):
+    producto = models.OneToOneField(Producto, on_delete=models.CASCADE)
+    cantidad = models.PositiveIntegerField(default=0)
+    umbral_minimo = models.PositiveIntegerField(default=5)
+    fecha_actualizacion = models.DateTimeField(auto_now=True)
+
+    @property
+    def necesita_reponer(self):
+        return self.cantidad < self.umbral_minimo
+    
+    
+class Pedido(models.Model):
+    ESTADOS = (
+        ('P', 'Pendiente'),
+        ('E', 'Enviado'),
+        ('C', 'Completado'),
+        ('R', 'Reembolsado')
+    )
+    usuario = models.ForeignKey(CustomUser, on_delete=models.PROTECT)
+    fecha = models.DateTimeField(auto_now_add=True)
+    estado = models.CharField(max_length=1, choices=ESTADOS, default='P')
+    total = models.DecimalField(max_digits=10, decimal_places=2)
+
+class DetallePedido(models.Model):
+    pedido = models.ForeignKey(Pedido, on_delete=models.CASCADE)
+    producto = models.ForeignKey(Producto, on_delete=models.PROTECT)
+    cantidad = models.PositiveIntegerField()
+    precio = models.DecimalField(max_digits=10, decimal_places=2)
+    
+class Cupon(models.Model):
+    codigo = models.CharField(max_length=20, unique=True)
+    descuento = models.DecimalField(max_digits=5, decimal_places=2)
+    valido_desde = models.DateTimeField()
+    valido_hasta = models.DateTimeField()
+    activo = models.BooleanField(default=True)
+    
+class Notificacion(models.Model):
+    usuario = models.ForeignKey(CustomUser, on_delete=models.CASCADE)
+    mensaje = models.TextField()
+    leida = models.BooleanField(default=False)
+    fecha = models.DateTimeField(auto_now_add=True)
+    tipo = models.CharField(max_length=20)  # 'pedido', 'oferta', etc.

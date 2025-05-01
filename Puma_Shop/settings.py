@@ -14,6 +14,8 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = 'django-insecure-p)bc!e$i_ns(99=1)p60p*wf02)ta5_by*c6^3f1y$a1lf-@3k'
 DEBUG = False
 ALLOWED_HOSTS = ['*']  # Luego lo cambiarás
+CSRF_COOKIE_SECURE = True
+SESSION_COOKIE_SECURE = True
 CSRF_TRUSTED_ORIGINS = ['https://tu-app.onrender.com']
 
 INSTALLED_APPS = [

@@ -11,6 +11,8 @@ from django.contrib.auth import login, logout
 from .forms import RegistroForm, LoginForm
 from django.views.generic import TemplateView
 from .models import Banner, Producto
+from django.contrib.auth.decorators import login_required, permission_required
+from django.db.models import Q
 
 def index(request):
     banners_activos = Banner.objects.filter(activo=True).order_by('orden')
@@ -22,7 +24,7 @@ def index(request):
     })
 
 def shop_view(request):
-    productos = Producto.objects.all()
+    productos = Producto.objects.select_related('categoria').prefetch_related('imagenes').all()
     return render(request, 'store/shop.html', {'productos': productos})
 
 def ofertas_view(request):
@@ -32,6 +34,7 @@ def ofertas_view(request):
 class CustomLoginView(LoginView):
     template_name = 'store/login.html'
 
+@permission_required('store.add_producto')
 @login_required
 def agregar_producto(request):
     if request.method == 'POST':
@@ -111,3 +114,11 @@ def categoria_view(request, categoria):
 
 class ContactoView(TemplateView):
     template_name = 'store/contacto.html'
+    
+def buscar_productos(request):
+    query = request.GET.get('q')
+    resultados = Producto.objects.filter(
+        Q(nombre__icontains=query) | 
+        Q(descripcion__icontains=query)
+    )
+    return render(request, 'store/busqueda.html', {'resultados': resultados})
