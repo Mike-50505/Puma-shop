@@ -12,11 +12,12 @@ import dj_database_url
 BASE_DIR = Path(__file__).resolve().parent.parent
 
 SECRET_KEY = 'django-insecure-p)bc!e$i_ns(99=1)p60p*wf02)ta5_by*c6^3f1y$a1lf-@3k'
-DEBUG = False
-ALLOWED_HOSTS = ['*']  # Luego lo cambiarás
-CSRF_COOKIE_SECURE = True
-SESSION_COOKIE_SECURE = True
-CSRF_TRUSTED_ORIGINS = ['https://tu-app.onrender.com']
+DEBUG = True
+ALLOWED_HOSTS = ['https://puma-shop.onrender.com']  # Luego lo cambiarás
+SESSION_COOKIE_SECURE = False  # True solo si usas HTTPS (en producción)
+CSRF_COOKIE_SECURE = False     # Igual que arriba
+SESSION_COOKIE_SAMESITE = 'Lax'
+CSRF_TRUSTED_ORIGINS = ['https://puma-shop.onrender.com']
 
 INSTALLED_APPS = [
     'django.contrib.admin',
