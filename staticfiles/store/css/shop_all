@@ -1,0 +1,38 @@
+.titulo_cont{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding-left: 10%;
+    background-color: rgba(0, 255, 255, 0);
+}
+.titulo{
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    flex-grow: 1;
+    text-align: center;
+    text-decoration: none;
+    color: rgb(0, 0, 0);
+    text-transform: uppercase;
+}
+.subtitulo{
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    flex-grow: 1;
+    text-align: center;
+    text-decoration: none;
+    color: rgb(255, 255, 255);
+    text-transform: uppercase;
+}
+.iniciar_secion_barrasuperior{
+    color: rgb(0, 0, 0);
+    text-decoration: none;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    text-transform: uppercase;
+}
+.contenedor_de_articulos{
+    background-color: rgb(0, 0, 0);
+    margin-top: 4%;
+    display: flex;
+    justify-content: space-around; /* O usa 'space-between' si quieres márgenes iguales en el centro */
+    align-items: center;
+    gap: 20px; 
+    padding: 30px;
+}

@@ -67,11 +67,10 @@ TEMPLATES = [
 WSGI_APPLICATION = 'Puma_Shop.wsgi.application'
 
 DATABASES = {
-    'default': dj_database_url.config(
-        default='postgresql://puma_shop_db_user:JWLlWHnb2eqjLnsDwgdQL7bt9ukjN6x5@dpg-d095s18dl3ps73a8kto0-a:5432/puma_shop_db',
-        conn_max_age=600,
-        ssl_require=True
-    )
+    'default': {
+        'ENGINE': 'django.db.backends.sqlite3',
+        'NAME': BASE_DIR / 'db.sqlite3',  # Usará SQLite (archivo local)
+    }
 }
 
 AUTH_USER_MODEL = 'store.CustomUser'
