@@ -21,10 +21,7 @@ ALLOWED_HOSTS = [
 SESSION_COOKIE_SECURE = False  # True solo si usas HTTPS (en producción)
 CSRF_COOKIE_SECURE = False     # Igual que arriba
 SESSION_COOKIE_SAMESITE = 'Lax'
-CSRF_TRUSTED_ORIGINS = [
-    'https://puma-shop.onrender.com',
-    'https://*.onrender.com',
-]
+CSRF_TRUSTED_ORIGINS = ['https://puma-shop.onrender.com']
 
 INSTALLED_APPS = [
     'django.contrib.admin',
@@ -71,7 +68,9 @@ WSGI_APPLICATION = 'Puma_Shop.wsgi.application'
 
 DATABASES = {
     'default': dj_database_url.config(
-        default='sqlite:///' + os.path.join(BASE_DIR, 'db.sqlite3')
+        default='postgresql://puma_shop_db_user:JWLlWHnb2eqjLnsDwgdQL7bt9ukjN6x5@dpg-d095s18dl3ps73a8kto0-a:5432/puma_shop_db',
+        conn_max_age=600,
+        ssl_require=True
     )
 }
 
