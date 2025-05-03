@@ -4,6 +4,7 @@ from django.contrib.admin.models import LogEntry
 from .models import CustomUser, Producto
 from .models import Banner
 
+
 # Producto Admin
 @admin.register(Producto)
 class ProductoAdmin(admin.ModelAdmin):
