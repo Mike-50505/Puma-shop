@@ -24,7 +24,7 @@ def index(request):
     })
 
 def shop_view(request):
-    productos = Producto.objects.select_related('categoria').prefetch_related('imagenes').all()
+    productos = Producto.objects.all()  # ← Elimina select_related
     return render(request, 'store/shop.html', {'productos': productos})
 
 def ofertas_view(request):
