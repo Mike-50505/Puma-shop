@@ -1,0 +1,34 @@
+{% extends 'store/base.html' %}
+{% load static %}
+
+{% block content %}
+<div class="contenedor-detalle">
+    <div class="imagen-detalle">
+        {% if producto.imagen %}
+            <img src="{{ producto.imagen.url }}" alt="{{ producto.nombre }}">
+        {% else %}
+            <img src="{% static 'images/placeholder.png' %}" alt="No image available">
+        {% endif %}
+    </div>
+    
+    <div class="info-detalle">
+        <h1>{{ producto.nombre }}</h1>
+        <p class="precio-detalle">
+            {% if producto.oferta %}
+                <span class="precio-tachado">${{ producto.precio }}</span>
+                <span class="precio-oferta">${{ producto.precio_oferta }}</span>
+            {% else %}
+                ${{ producto.precio }}
+            {% endif %}
+        </p>
+        
+        <p class="descripcion">{{ producto.descripcion }}</p>
+        
+        <div class="acciones">
+            <a href="{% url 'agregar_al_carrito' producto.id %}" class="boton-carrito">Añadir al carrito</a>
+            <a href="{% url 'shop' %}" class="boton-volver">Volver a la tienda</a>
+            
+        </div>
+    </div>
+</div>
+{% endblock %}

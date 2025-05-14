@@ -1,0 +1,38 @@
+{% extends 'store/base.html' %}
+{% load static %}
+
+{% block content %}
+<div class="contenedor-carrito">
+    <h2 class="subtitulo-seccion">Tu Carrito</h2>
+    
+    {% if request.session.carrito %}
+        <div class="items-carrito">
+            {% for item in carrito %}
+                <div class="item-carrito">
+                    <div class="imagen-carrito">
+                        <img src="{{ item.producto.imagen.url }}" alt="{{ item.producto.nombre }}">
+                    </div>
+                    <div class="info-carrito">
+                        <h3>{{ item.producto.nombre }}</h3>
+                        <p class="precio">${{ item.precio }}</p>
+                        <form method="post" action="{% url 'actualizar_carrito' item.producto.id %}">
+                            {% csrf_token %}
+                            <input type="number" name="cantidad" value="{{ item.cantidad }}" min="1">
+                            <button type="submit">Actualizar</button>
+                        </form>
+                        <a href="{% url 'remover_del_carrito' item.producto.id %}" class="btn-eliminar">Eliminar</a>
+                    </div>
+                </div>
+            {% endfor %}
+        </div>
+        
+        <div class="resumen-carrito">
+            <h3>Total: ${{ carrito.obtener_total }}</h3>
+            <a href="{% url 'shop' %}" class="btn-seguir">Seguir comprando</a>
+            <a href="#" class="btn-checkout">Finalizar compra</a>
+        </div>
+    {% else %}
+        <p class="carrito-vacio">Tu carrito está vacío</p>
+    {% endif %}
+</div>
+{% endblock %}

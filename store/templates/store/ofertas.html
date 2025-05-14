@@ -1,0 +1,33 @@
+{% extends 'store/base.html' %}
+{% load static %}
+
+{% block content %}
+<div class="contenedor_de_articulos">
+    <h2 class="subtitulo-seccion">Ofertas Especiales</h2>
+    <div class="grid-productos">
+        {% for producto in productos %}
+        <div class="producto-card">
+            <div class="producto-imagen">
+                <a href="{% url 'detalle_producto_slug' producto.slug %}">
+                    {% if producto.imagen %}
+                        <img src="{{ producto.imagen.url }}" alt="{{ producto.nombre }}" loading="lazy">
+                    {% else %}
+                        <div class="imagen-placeholder">Sin imagen</div>
+                    {% endif %}
+                    {% if producto.oferta %}
+                    <span class="etiqueta-oferta">¡Oferta!</span>
+                    {% endif %}
+                </a>
+            </div>
+            <div class="producto-info">
+                <h3>{{ producto.nombre }}</h3>
+                <p class="precio">
+                    <span class="precio-original">${{ producto.precio }}</span>
+                    <span class="precio-descuento">${{ producto.precio_oferta }}</span>
+                </p>
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+</div>
+{% endblock %}
